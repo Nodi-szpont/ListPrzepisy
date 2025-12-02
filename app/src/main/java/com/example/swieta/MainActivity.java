@@ -1,5 +1,6 @@
 package com.example.swieta;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         view.setBackgroundColor(Color.GRAY);
                         Toast.makeText(MainActivity.this, "Wybrano kategorię" + i, Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(MainActivity.this, listaPrzepisowActivity.class);
+                        String kategoria = adapterView.getItemAtPosition(i).toString();
+                        intent.putExtra("KATEGORIA", kategoria);
+                        startActivity(intent);
                     }
                 }
         );
